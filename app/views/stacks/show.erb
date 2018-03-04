@@ -1,0 +1,21 @@
+
+<h2>Title: <%= @stack.title %></h2>
+<h2>Subject: <%= @stack.subject %></h2>
+<h2>Stack ID: <%= @stack.id %></h2>
+
+
+<form action="/stacks/<%=@stack.id%>/edit" method="get">
+	<input type="submit" value="Edit Stack">
+</form>
+
+<form action="/stacks/<%=@stack.id%>/delete" method="post">
+	<input type="submit" value="Delete Stack">
+</form>
+
+
+
+
+<h3><a href="/">Home Page</a></h3>
+<h3><a href="/stacks/new">Create a new stack.</a></h3>
+<h3><a href="/">Create a new flashcard.</a></h3>
+<h3><a href="/logout">Logout</a></h3>

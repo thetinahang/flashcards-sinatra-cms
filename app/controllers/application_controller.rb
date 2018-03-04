@@ -1,22 +1,23 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
+  require 'rack-flash'
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "clandestine"
+    set :session_secret, "password_security"
+    use Rack::Flash
   end
 
-  get '/' do # controller action to load home page
-
-#    if logged_in?
-#      @user = User.find(current_user.id)
-#      redirect to "/stacks"
-#    else
-  	  erb :'/index' # index to link to login and signup
-#    end
+  get '/' do 
+   if logged_in?
+      @user = User.find(current_user.id)
+      erb :"/stacks/stacks"
+    else
+  	  erb :index
+    end
   end
 
   helpers do

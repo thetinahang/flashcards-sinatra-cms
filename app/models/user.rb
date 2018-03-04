@@ -1,9 +1,15 @@
 class User < ActiveRecord::Base
 	has_secure_password
+
+	validates :username, presence: true
+	validates :username, uniqueness: true
+	validates :email, presence: true
+	validates :email, uniqueness: true
+
 	has_many :stacks
 	has_many :flashcards, through: :stacks
 
-	#need to add validation so usernames are unique
+	
 
 	def slug
 		self.username.downcase.gsub(" ", "-")
